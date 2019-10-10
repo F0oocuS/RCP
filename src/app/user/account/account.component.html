@@ -1,0 +1,37 @@
+<section class="account">
+	<div class="container">
+		<h1 class="account__title">Your personal account</h1>
+
+		<div class="account__content">
+			<div class="account__left">
+				<mat-card class="account__info">
+					<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+					<mat-card-title>{{ (user$ | async)?.userName }}</mat-card-title>
+					<mat-card-subtitle>{{ (user$ | async)?.firstName }} {{ (user$ | async)?.lastName }}</mat-card-subtitle>
+				</mat-card>
+
+				<button mat-raised-button color="primary" (click)="openAddMoreUserInfoDialog()">Add more info</button>
+			</div>
+
+			<div class="account__right">
+				<mat-tab-group>
+					<mat-tab [label]="'Your items (' + (userRecipes$ | async)?.length + ')'" class="tab account__tab">
+						<div class="tab__list">
+							<div class="tab__list-item" *ngFor="let item of userRecipes$ | async">
+								<app-recipe-item [recipe]="item"></app-recipe-item>
+							</div>
+						</div>
+					</mat-tab>
+
+					<mat-tab [label]="'Favorite items (' + (userFavoriteRecipes$ | async)?.length + ')'" class="tab account__tab">
+						<div class="tab__list">
+							<div class="tab__list-item" *ngFor="let item of userFavoriteRecipes$ | async">
+								<app-recipe-item [recipe]="item"></app-recipe-item>
+							</div>
+						</div>
+					</mat-tab>
+				</mat-tab-group>
+			</div>
+		</div>
+	</div>
+</section>

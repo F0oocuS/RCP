@@ -1,0 +1,15 @@
+.shopping-list {
+	&__title {
+		font-size: 36px;
+	}
+}
+
+.tab {
+	&__title {
+		padding: 16px 0;
+		font-size: 24px;
+	}
+	&__content {
+		padding: 16px;
+	}
+}

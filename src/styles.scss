@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.form {
+	margin: 0 auto;
+	max-width: 500px;
+	&__field {
+		width: 100%;
+	}
+}
+
+.container {
+	margin: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 100%;
+	max-width: 1200px;
+}
+
+.row {
+	margin-left: -15px;
+	margin-right: -15px;
+}

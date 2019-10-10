@@ -1,0 +1,11 @@
+<mat-card style="margin-bottom: 20px;">
+	<mat-card-header>
+		<div mat-card-avatar class="example-header-image"></div>
+		<mat-card-title>{{ comment.userName }}</mat-card-title>
+		<mat-card-subtitle *ngIf="comment.fullName">{{ comment.fullName }}</mat-card-subtitle>
+	</mat-card-header>
+
+	<mat-card-content>
+		<p>{{ comment.comment }}</p>
+	</mat-card-content>
+</mat-card>

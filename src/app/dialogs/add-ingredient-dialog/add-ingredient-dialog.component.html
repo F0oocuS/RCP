@@ -1,0 +1,24 @@
+<div>
+	<h2 mat-dialog-title>Select ingredient</h2>
+
+	<mat-dialog-content>
+		<mat-form-field>
+			<input type="text" placeholder="Enter ingredient name" aria-label="Number" matInput [formControl]="searchIngredientInput" [matAutocomplete]="auto">
+
+			<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayIngredientName">
+				<mat-option *ngFor="let item of ingredients" [value]="item">
+					{{ item.name }}
+				</mat-option>
+			</mat-autocomplete>
+		</mat-form-field>
+
+		<mat-form-field>
+			<input type="number" placeholder="Enter ingredient count" aria-label="Number" matInput [formControl]="ingredientCount">
+		</mat-form-field>
+	</mat-dialog-content>
+
+	<mat-dialog-actions align="end">
+		<button mat-raised-button mat-dialog-close color="primary" [disabled]="!searchIngredientInput.valid || !ingredientCount.valid" [mat-dialog-close]="onAddIngredient()">Add</button>
+		<button mat-raised-button mat-dialog-close>Cancel</button>
+	</mat-dialog-actions>
+</div>

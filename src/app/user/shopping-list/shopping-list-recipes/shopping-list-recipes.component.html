@@ -1,0 +1,11 @@
+<mat-card class="recipe" *ngFor="let item of recipes">
+	<mat-card-title>{{ item.name }}</mat-card-title>
+
+	<mat-card-content>
+		<mat-selection-list>
+			<mat-list-option *ngFor="let ingredient of item.ingredients">
+				{{ ingredient.name }} (0/{{ ingredient.count }})
+			</mat-list-option>
+		</mat-selection-list>
+	</mat-card-content>
+</mat-card>

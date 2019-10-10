@@ -1,0 +1,25 @@
+<mat-card class="recipe">
+	<img mat-card-image [src]="domainUrl + recipe?.imagePath" alt="Photo of a Shiba Inu">
+
+	<button class="recipe__like"
+	        type="button"
+	        mat-icon-button
+	        color="accent"
+	        [matTooltip]="recipe?.isFavorite ? 'Remove from favorite' : 'Add to favorite'"
+	        matTooltipPosition="left"
+	        aria-label="Button that displays a tooltip when focused or hovered over"
+	        (click)="onAddRemoveRecipeToFavorite(recipe?.id)"
+	        *ngIf="recipe?.isFavorite !== undefined"
+	>
+		<mat-icon aria-label="Example icon-button with a heart icon">{{ recipe?.isFavorite ? 'favorite' : 'favorite_border' }}</mat-icon>
+	</button>
+
+	<mat-card-title>{{ recipe?.name }}</mat-card-title>
+
+	<mat-card-subtitle *ngIf="recipe?.rating">Rating ({{ recipe.rating }})</mat-card-subtitle>
+
+	<mat-card-actions>
+		<a type="button" [routerLink]="'/recipe/' + recipe?.id"  mat-raised-button color="primary">More</a>
+		<a type="button" mat-raised-button color="accent" (click)="onAddRecipeToShoppingList(recipe?.id)">To shopping list</a>
+	</mat-card-actions>
+</mat-card>

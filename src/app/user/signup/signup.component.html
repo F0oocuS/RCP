@@ -1,0 +1,26 @@
+<form class="form" [formGroup]="signUpForm" (submit)="onSubmit()">
+	<mat-card>
+		<mat-card-title>Registration</mat-card-title>
+
+		<mat-form-field class="form__field">
+			<input class="form__input" type="email" placeholder="Email" formControlName="email" matInput>
+
+			<mat-error *ngIf="signUpForm.get('email').touched && !signUpForm.get('email').valid">Email error</mat-error>
+		</mat-form-field>
+
+		<mat-form-field class="form__field">
+			<input class="form__input" type="text" placeholder="User name" formControlName="userName" matInput>
+
+			<mat-error *ngIf="signUpForm.get('userName').touched && !signUpForm.get('userName').valid">User name error</mat-error>
+		</mat-form-field>
+
+		<mat-form-field class="form__field">
+			<input class="form__input" [type]="hidePassword ? 'password' : 'text'" placeholder="Password" formControlName="password" matInput>
+			<mat-icon matSuffix (click)="hidePassword = !hidePassword">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+
+			<mat-error *ngIf="signUpForm.get('password').touched && !signUpForm.get('password').valid">Password error</mat-error>
+		</mat-form-field>
+
+		<button mat-raised-button color="primary" type="submit" [disabled]="!signUpForm.valid">Registration</button>
+	</mat-card>
+</form>

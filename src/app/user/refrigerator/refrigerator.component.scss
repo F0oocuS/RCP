@@ -1,0 +1,10 @@
+.refrigerator {
+	&__buttons {
+		margin-left: auto;
+		button {
+			&:not(:first-child) {
+				margin-left: 20px;
+			}
+		}
+	}
+}

@@ -1,0 +1,23 @@
+<section class="shopping-list">
+	<div class="container">
+		<h1 class="shopping-list__title">Your own shopping list</h1>
+
+		<mat-tab-group class="shopping-list__tabs">
+			<mat-tab label="Sort by recipes" class="tab shopping-list__tab-item">
+				<h4 class="tab__title">All needed recipes</h4>
+
+				<div class="tab__content">
+					<app-shopping-list-recipes [recipes]="recipes$ | async"></app-shopping-list-recipes>
+				</div>
+			</mat-tab>
+
+			<mat-tab label="Sort by ingredients" class="tab shopping-list__tab-item">
+				<h4 class="tab__title">All needed ingredients</h4>
+
+				<div class="tab__content">
+					<app-shopping-list-ingredients [ingredients]="ingredients$ | async"></app-shopping-list-ingredients>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+	</div>
+</section>

@@ -1,0 +1,16 @@
+<div>
+	<h2 mat-dialog-title>Write your own comment!</h2>
+
+	<mat-dialog-content>
+		<form [formGroup]="addRecipeCommentForm" (submit)="onSubmit()">
+			<mat-form-field>
+				<textarea matInput placeholder="Leave a comment" formControlName="comment"></textarea>
+			</mat-form-field>
+		</form>
+	</mat-dialog-content>
+
+	<mat-dialog-actions align="end">
+		<button type="submit" mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!addRecipeCommentForm.valid">Add comment</button>
+		<button mat-raised-button mat-dialog-close>Cancel</button>
+	</mat-dialog-actions>
+</div>

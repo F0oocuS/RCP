@@ -1,0 +1,42 @@
+.home {
+	&__title {
+		margin-bottom: 30px;
+		font-size: 36px;
+	}
+	&__list {
+		margin-left: -15px;
+		margin-right: -15px;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	&__list-item {
+		margin-bottom: 30px;
+		padding-left: 15px;
+		padding-right: 15px;
+		width: 25%;
+	}
+}
+
+@media(max-width: 991px) {
+	.home {
+		&__list-item {
+			width: calc(100% / 3);
+		}
+	}
+}
+
+@media(max-width: 767px) {
+	.home {
+		&__list-item {
+			width: 50%;
+		}
+	}
+}
+
+@media(max-width: 520px) {
+	.home {
+		&__list-item {
+			width: 100%;
+		}
+	}
+}

@@ -1,0 +1,12 @@
+.recipe {
+	position: relative;
+	&__like {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+	}
+	img {
+		height: 200px;
+		object-fit: contain;
+	}
+}

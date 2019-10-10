@@ -1,0 +1,18 @@
+<section class="refrigerator">
+	<div class="container">
+		<h1 class="refrigerator__title">Your personal refrigerator</h1>
+
+		<mat-list class="refrigerator__list">
+			<mat-list-item class="refrigerator__list-item" *ngFor="let item of ingredients$ | async; let i = index">
+				<span [matBadge]="item?.count" matBadgeOverlap="false">{{ item?.name }}</span>
+
+				<div class="refrigerator__buttons">
+					<button type="button" mat-raised-button color="accent" (click)="openChangeIngredientDialog(item.id, item.count)">Change count</button>
+					<button type="button" mat-raised-button color="warn" (click)="onDeleteIngredientFromRefrigerator(i, item.id)">Delete</button>
+				</div>
+			</mat-list-item>
+		</mat-list>
+
+		<button class="refrigerator__add-item" type="button" mat-raised-button color="primary" (click)="openAddIngredientDialog()">Add ingredient</button>
+	</div>
+</section>

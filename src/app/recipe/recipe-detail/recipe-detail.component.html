@@ -1,0 +1,51 @@
+<section class="recipe-detail">
+	<div class="container">
+		<h1 class="recipe-detail__title">Recipe name</h1>
+
+		<mat-tab-group class="recipe-detail__tabs">
+			<mat-tab label="Overview" class="tab recipe-detail__tab-item">
+				<div class="tab__content">
+					<mat-card>
+						<div class="tab__aside">
+							<img mat-card-image [src]="domainUrl + (recipe$ | async)?.imagePath" alt="Photo of a Shiba Inu">
+
+							<mat-card-title>{{ (recipe$ | async)?.name }}</mat-card-title>
+
+							<mat-card-subtitle>Rating ({{ (recipe$ | async)?.rating }})</mat-card-subtitle>
+						</div>
+
+						<div class="tab__desc">
+							<mat-card-title>
+								Description
+							</mat-card-title>
+
+							<mat-card-content>
+								<p>{{ (recipe$ | async)?.description }}</p>
+							</mat-card-content>
+
+							<mat-card-actions>
+								<button type="button" mat-raised-button color="accent" (click)="onAddRecipeToShoppingList()">To shopping list</button>
+								<button type="button" mat-raised-button color="primary" (click)="openAddRecipeRatingDialog()">Add rating</button>
+								<button type="button" mat-raised-button (click)="openAddRecipeCommentDialog()">Add comment</button>
+							</mat-card-actions>
+						</div>
+					</mat-card>
+				</div>
+			</mat-tab>
+
+			<mat-tab label="Cooke process" class="tab shopping-list__tab-item">
+				<h4 class="tab__title">Cooke process</h4>
+
+				<div class="tab__content">{{ (recipe$ | async)?.process }}</div>
+			</mat-tab>
+
+			<mat-tab [label]="'Comments (' + (recipe$ | async)?.comments.length + ')'" class="tab shopping-list__tab-item">
+				<h4 class="tab__title">Comments</h4>
+
+				<div class="tab__content">
+					<app-recipe-comments *ngFor="let item of (recipe$ | async)?.comments" [comment]="item"></app-recipe-comments>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+	</div>
+</section>

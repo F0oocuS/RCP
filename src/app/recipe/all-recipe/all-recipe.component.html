@@ -1,0 +1,33 @@
+<section class="all-recipe">
+	<div class="container">
+		<h1 class="all-recipe__title">All recipe</h1>
+
+		<!--<button mat-raised-button color="primary" (click)="onSearchRecipesFormSubmit()">Submit</button>-->
+
+		<div class="all-recipe__search">
+			<form class="all-recipe__form">
+				<mat-form-field class="all-recipe__form-field">
+					<input type="text" placeholder="Enter recipe name"  matInput [formControl]="recipeSearchControl">
+				</mat-form-field>
+			</form>
+		</div>
+
+		<div class="all-recipe__content">
+			<!--<div class="filter all-recipe__filter">-->
+				<!--<mat-card>-->
+					<!--<mat-card-title>Filters</mat-card-title>-->
+					<!--text-->
+					<!--text-->
+					<!--<div></div>-->
+					<!--text-->
+				<!--</mat-card>-->
+			<!--</div>-->
+
+			<div class="all-recipe__list">
+				<div class="all-recipe__list-item" *ngFor="let item of recipes$ | async">
+					<app-recipe-item [recipe]="item"></app-recipe-item>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
