@@ -7,21 +7,13 @@
 				<div class="tab__content">
 					<mat-card>
 						<div class="tab__aside">
-							<img mat-card-image [src]="domainUrl + (recipe$ | async)?.imagePath" alt="Photo of a Shiba Inu">
+							<img mat-card-image [src]="domainUrl + (recipe$ | async)?.imagePath" [alt]="(recipe$ | async)?.name + ' image'">
+						</div>
 
+						<div class="tab__info">
 							<mat-card-title>{{ (recipe$ | async)?.name }}</mat-card-title>
 
 							<mat-card-subtitle>Rating ({{ (recipe$ | async)?.rating }})</mat-card-subtitle>
-						</div>
-
-						<div class="tab__desc">
-							<mat-card-title>
-								Description
-							</mat-card-title>
-
-							<mat-card-content>
-								<p>{{ (recipe$ | async)?.description }}</p>
-							</mat-card-content>
 
 							<mat-card-actions>
 								<button type="button" mat-raised-button color="accent" (click)="onAddRecipeToShoppingList()">To shopping list</button>
@@ -29,14 +21,33 @@
 								<button type="button" mat-raised-button (click)="openAddRecipeCommentDialog()">Add comment</button>
 							</mat-card-actions>
 						</div>
+
+						<div class="tab__ingredients" *ngIf="(recipe$ | async)?.ingredients.length">
+							<h4 class="tab__title">Ingredients</h4>
+
+							<mat-chip-list>
+								<mat-chip color="primary" selected *ngFor="let item of (recipe$ | async)?.ingredients">{{ item.name }} ({{ item.count }})</mat-chip>
+							</mat-chip-list>
+						</div>
+
+						<div class="tab__desc">
+							<h4 class="tab__title">
+								Description
+							</h4>
+
+							<div class="tab__content">
+								<p>{{ (recipe$ | async)?.description }}</p>
+							</div>
+						</div>
+
+
+						<div class="tab__process">
+							<h4 class="tab__title">Cooke process</h4>
+
+							<div class="tab__content">{{ (recipe$ | async)?.process }}</div>
+						</div>
 					</mat-card>
 				</div>
-			</mat-tab>
-
-			<mat-tab label="Cooke process" class="tab shopping-list__tab-item">
-				<h4 class="tab__title">Cooke process</h4>
-
-				<div class="tab__content">{{ (recipe$ | async)?.process }}</div>
 			</mat-tab>
 
 			<mat-tab [label]="'Comments (' + (recipe$ | async)?.comments.length + ')'" class="tab shopping-list__tab-item">

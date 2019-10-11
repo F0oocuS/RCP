@@ -15,15 +15,19 @@
 		padding: 15px;
 		mat-card {
 			display: flex;
+			flex-wrap: wrap;
 		}
 	}
-	&__aside, &__desc {
+	&__aside, &__info {
 		padding: 15px;
 	}
 	&__aside {
 		width: 25%;
 	}
-	&__desc {
+	&__info {
 		width: 75%;
+	}
+	&__ingredients, &__process, &__desc {
+		width: 100%;
 	}
 }

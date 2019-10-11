@@ -44,6 +44,8 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
 
 			this.recipe$ = this.store.select(selectRecipe);
 			this.store.dispatch(new RecipeRead(this.recipeId));
+
+			this.recipe$.subscribe(item => console.log(item));
 		});
 	}
 
@@ -51,7 +53,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
 		this.recipeIdSubscription.unsubscribe();
 	}
 
-	public openAddRecipeRatingDialog(recipeId: number): void {
+	public openAddRecipeRatingDialog(): void {
 		const dialog = this.dialog.open(AddRecipeRatingDialogComponent, {
 			width: '600px',
 			data: {
@@ -68,7 +70,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
 		});
 	}
 
-	public openAddRecipeCommentDialog(recipeId: number): void {
+	public openAddRecipeCommentDialog(): void {
 		const dialog = this.dialog.open(AddRecipeCommentDialogComponent, {
 			width: '600px',
 			data: {
