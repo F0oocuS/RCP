@@ -14,6 +14,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class RecipeItemComponent implements OnInit {
 	@Input() recipe: RecipeInterface;
+	@Input() isLogin: boolean;
 
 	public domainUrl = environment.domainUrl;
 
@@ -23,9 +24,9 @@ export class RecipeItemComponent implements OnInit {
 		private _snackBar: MatSnackBar
 		) {}
 
-	public ngOnInit() {}
+	public ngOnInit(): void {}
 
-	public onAddRecipeToShoppingList(recipeId: number) {
+	public onAddRecipeToShoppingList(recipeId: number): void {
 		this.shoppingListService.addRecipeToShoppingList(recipeId).subscribe(
 			recipe => {
 				const message = 'Recipe ' + recipe.name + ' was add to shopping list!';
@@ -37,7 +38,7 @@ export class RecipeItemComponent implements OnInit {
 		)
 	}
 
-	public onAddRemoveRecipeToFavorite(recipeId: number) {
+	public onAddRemoveRecipeToFavorite(recipeId: number): void {
 		this.recipeService.addRemoveRecipeToFavorite(recipeId).subscribe(
 			response => {
 				console.log(response);

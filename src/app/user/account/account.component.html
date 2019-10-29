@@ -10,7 +10,10 @@
 					<mat-card-subtitle>{{ (user$ | async)?.firstName }} {{ (user$ | async)?.lastName }}</mat-card-subtitle>
 				</mat-card>
 
-				<button mat-raised-button color="primary" (click)="openAddMoreUserInfoDialog()">Add more info</button>
+				<div class="account__buttons">
+					<button mat-raised-button color="primary" (click)="openAddMoreUserInfoDialog()">Add more info</button>
+					<button mat-raised-button color="warn" (click)="onLogout()">Logout</button>
+				</div>
 			</div>
 
 			<div class="account__right">
@@ -18,7 +21,7 @@
 					<mat-tab [label]="'Your items (' + (userRecipes$ | async)?.length + ')'" class="tab account__tab">
 						<div class="tab__list">
 							<div class="tab__list-item" *ngFor="let item of userRecipes$ | async">
-								<app-recipe-item [recipe]="item"></app-recipe-item>
+								<app-recipe-item [recipe]="item" [isLogin]="true"></app-recipe-item>
 							</div>
 						</div>
 					</mat-tab>
@@ -26,7 +29,7 @@
 					<mat-tab [label]="'Favorite items (' + (userFavoriteRecipes$ | async)?.length + ')'" class="tab account__tab">
 						<div class="tab__list">
 							<div class="tab__list-item" *ngFor="let item of userFavoriteRecipes$ | async">
-								<app-recipe-item [recipe]="item"></app-recipe-item>
+								<app-recipe-item [recipe]="item" [isLogin]="true"></app-recipe-item>
 							</div>
 						</div>
 					</mat-tab>

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { RecipeInterface } from '../interfaces/recipe.interface';
 import { environment } from '../../environments/environment';
 import { UserService } from './user.service';
 
@@ -29,7 +28,7 @@ export class RecipeService {
 	public getAllRecipe(): Observable<any> {
 		return this.http.get(environment.domainUrl + 'recipe', {
 			headers: {
-				'Authorization': UserService.getToken()
+				Authorization: UserService.getToken()
 			}
 		});
 	}
@@ -45,7 +44,7 @@ export class RecipeService {
 	public getTopRatedRecipes(): Observable<any> {
 		return this.http.get(environment.domainUrl + 'recipe/top-rate', {
 			headers: {
-				'Authorization': UserService.getToken()
+				Authorization: UserService.getToken()
 			}
 		});
 	}
@@ -61,7 +60,7 @@ export class RecipeService {
 	public getSingleRecipe(recipeId: number): Observable<any> {
 		return this.http.get(environment.domainUrl + 'recipe/' + recipeId, {
 			headers: {
-				'Authorization': UserService.getToken()
+				Authorization: UserService.getToken()
 			}
 		});
 	}
@@ -69,7 +68,7 @@ export class RecipeService {
 	public addRemoveRecipeToFavorite(recipeId: number): Observable<any> {
 		return this.http.post(environment.domainUrl + 'recipe/favorite', { recipeId } , {
 			headers: {
-				'Authorization': UserService.getToken()
+				Authorization: UserService.getToken()
 			}
 		})
 	}
@@ -77,7 +76,7 @@ export class RecipeService {
 	public addRecipeRating(data): Observable<any> {
 		return this.http.post(environment.domainUrl + 'recipe/rating', data, {
 			headers: {
-				'Authorization': UserService.getToken()
+				Authorization: UserService.getToken()
 			}
 		});
 	}
@@ -85,7 +84,7 @@ export class RecipeService {
 	public addCommentToRecipe(data): Observable<any> {
 		return this.http.post(environment.domainUrl + 'recipe/comment', data, {
 			headers: {
-				'Authorization': UserService.getToken()
+				Authorization: UserService.getToken()
 			}
 		});
 	}
@@ -101,7 +100,7 @@ export class RecipeService {
 	public findRecipesByName(data): Observable<any> {
 		return this.http.post(environment.domainUrl + 'recipe/search', data, {
 			headers: {
-				'Authorization': UserService.getToken()
+				Authorization: UserService.getToken()
 			}
 		})
 	}

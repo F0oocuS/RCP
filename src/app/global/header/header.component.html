@@ -27,10 +27,6 @@
 				</li>
 
 				<li class="list__item" *ngIf="isLogin">
-					<a class="list__link" routerLink="/" (click)="onLogout()">Logout</a>
-				</li>
-
-				<li class="list__item" *ngIf="isLogin">
 					<a class="list__link" routerLink="account" mat-icon-button>
 						<mat-icon aria-label="Personal account link">account_circle</mat-icon>
 					</a>

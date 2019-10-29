@@ -4,8 +4,11 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { RecipeInterface } from '../../interfaces/recipe.interface';
+import { ShoppingListService } from '../../services/shopping-list.service';
 import { RecipeService } from '../../services/recipe.service';
+import { UserService } from '../../services/user.service';
+
+import { RecipeInterface } from '../../interfaces/recipe.interface';
 import { environment } from '../../../environments/environment';
 
 import { AddRecipeRatingDialogComponent } from '../../dialogs/add-recipe-rating-dialog/add-recipe-rating-dialog.component';
@@ -14,7 +17,6 @@ import { AddRecipeCommentDialogComponent } from '../../dialogs/add-recipe-commen
 import { RecipeStateInterface } from '../../store/reducers/recipe.reducer';
 import { selectRecipe } from '../../store/selectors';
 import { RecipeRead } from '../../store/actions';
-import { ShoppingListService } from '../../services/shopping-list.service';
 
 @Component({
 	selector: 'app-recipe-detail',
@@ -29,8 +31,12 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
 
 	public domainUrl = environment.domainUrl;
 
+	public isLogin: boolean;
+	private isLoginSubscription: Subscription;
+
 	constructor(
 		private recipeService: RecipeService,
+        private userService: UserService,
         private store: Store<RecipeStateInterface>,
         private activateRoute: ActivatedRoute,
         private _snackBar: MatSnackBar,
@@ -44,8 +50,10 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
 
 			this.recipe$ = this.store.select(selectRecipe);
 			this.store.dispatch(new RecipeRead(this.recipeId));
+		});
 
-			this.recipe$.subscribe(item => console.log(item));
+		this.isLoginSubscription = this.userService.isLogin.subscribe(value => {
+			this.isLogin = value;
 		});
 	}
 

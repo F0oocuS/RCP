@@ -15,7 +15,7 @@
 
 							<mat-card-subtitle>Rating ({{ (recipe$ | async)?.rating }})</mat-card-subtitle>
 
-							<mat-card-actions>
+							<mat-card-actions *ngIf="isLogin">
 								<button type="button" mat-raised-button color="accent" (click)="onAddRecipeToShoppingList()">To shopping list</button>
 								<button type="button" mat-raised-button color="primary" (click)="openAddRecipeRatingDialog()">Add rating</button>
 								<button type="button" mat-raised-button (click)="openAddRecipeCommentDialog()">Add comment</button>
